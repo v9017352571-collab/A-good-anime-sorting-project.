@@ -33,11 +33,8 @@ class DatabaseManager:
     - Управление жанрами
     """
 
-    def __init__(self, db_name=None):
+    def __init__(self, db_name="best_anime.sqlite"):
         """Инициализация с поддержкой cx_Freeze"""
-        if db_name is None:
-            # Используем безопасный путь к базе данных
-            db_name = "best_anime.sqlite"
 
         self.db_name = db_name
         self.init_database()
@@ -263,6 +260,7 @@ class DatabaseManager:
         2. Сохраняет бинарные данные в поле poster таблицы animes
         3. Обрабатывает ошибки чтения файла и обновления базы
         """
+
         conn = self.get_connection()
         cursor = conn.cursor()
         try:
